@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhode</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+    </head>
+    <body>
+        <header class="mynavbar">
+             <div class="logo">
+            <img src="images/logo.png" alt="Logo" style="height: 89px; width: 100px;">
+             </div>
+          
+          <div class="hamburger" id="hamburger">&#9776;</div>
+
+          <nav id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="inventory.html">Products</a>
+                <a href="about.html"class="active">About Us</a>
+                <a href="cart.html">Cart</a>
+                <a href="contacts.html">Contacts</a>
+            </nav>
+        </header>
+        
+            <section class="about-section">
+              <div class="about-image"></div>
+              <div class="about-content">
+                <h1>Our Philosopy</h1>
+              <p>We believe in making both Skincare and Makeup routines essential to one's day to day life</p>
+            </section>
+          
+            <!-- FOUNDER STORY -->
+            <section class="section">
+              <div class="section-content">
+                <img src="images/founder.jpg" alt="section-image">
+                <div class="text-block">
+                  <h2>Meet Our Founder</h2>
+                  <p>Inspired by a personal journey with sensitive skin and a love for minimal beauty, our founder created a brand that champions less but better — pure, effective skincare.</p>
+                </div>
+              </div>
+            </section>
+          
+            <!-- RESEARCH & DEVELOPMENT -->
+            <section class="section">
+              <div class="section-content">
+                <div class="text-block">
+                  <h2>Driven by Science</h2>
+                  <p>We work with top dermatologists and chemists to craft formulations that are safe, clinically proven, and intentional. Every product undergoes rigorous testing to ensure the best for your skin.</p>
+                </div>
+                <img src="images/case15.jpg" alt="Lab Research">
+              </div>
+            </section>
+
+            <!-- OUR PROMISE -->
+            <section class="section">
+              <div class="section-content">
+                <img src="images/case4.jpg" alt="Skincare Texture">
+                <div class="text-block">
+                  <h2>Our Promise</h2>
+                  <p>Clean, high-performance ingredients. No unnecessary fillers. No compromises. Just skincare that works — for all skin types and tones.</p>
+                </div>
+              </div>
+            </section>
+
+ <!-- INGREDIENTS SECTION -->
+<section class="ingredients-section">
+  <h2 style="text-align: center; font-size: 36px;">Key Ingredients</h2>
+  <div class="ingredients-grid">
+    
+    
+    <div class="ingredient reveal">
+      <img src="images/peptides.jpg" alt="Peptides" style="width:100%; border-radius:10px; margin-bottom:15px;">
+      <h3>Peptides</h3>
+      <p>Boosts skin elasticity and strengthens the moisture barrier.</p>
+    </div>
+
+    <div class="ingredient reveal">
+      <img src="images/niancian.jpg" alt="Niacinamide" style="width:100%; border-radius:10px; margin-bottom:15px;">
+      <h3>Niacinamide</h3>
+      <p>Helps visibly improve uneven skin tone and minimize pores.</p>
+    </div>
+
+    <div class="ingredient reveal">
+      <img src="images/acid.jpg" alt="Hyaluronic Acid" style="width:100%; border-radius:10px; margin-bottom:15px;">
+      <h3>Hyaluronic Acid</h3>
+      <p>Attracts and locks in moisture for lasting hydration.</p>
+    </div>
+    
+    <div class="ingredient reveal">
+      <img src="images/acid2.jpg" alt="Antioxidants" style="width:100%; border-radius:10px; margin-bottom:15px;">
+      <h3>Antioxidants</h3>
+      <p>Shields skin against environmental damage and aging.</p>
+      </section>
+    </div>
+
+<h2 style="text-align: center; font-size: 36px;">Rhode Guide</h2>
+     <section class="overlay-section">
+      <div class="image-overlay reveal">
+        <img src="images/case17.jpg" alt="Background Image 1">
+        <div class="text-content">
+          <h2>Glow Guide </h2>
+          <p>Healthy skin is always in</p>
+        </div>
+      </div>
+    
+      <div class="image-overlay reveal">
+        <img src="images/case8.jpg" alt="Image 2">
+        <div class="text-content">
+          <h2>Skin Tip</h2>
+          <p>Sometimes, simple is the best.</p>
+        </div>
+      </div>
+    
+      <div class="image-overlay reveal">
+        <img src="images/down1.jpg" alt="Image 3">
+        <div class="text-content">
+          <h2>What is your skin type?</h2>
+          <p>Get to know your skin type and what works best on you.</p>
+        </div>
+      </div>
+
+      <script>
+        const reveals = document.querySelectorAll('.reveal');
+      
+        function revealOnScroll() {
+          for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const elementTop = reveals[i].getBoundingClientRect().top;
+            const revealPoint = 100;
+      
+            if (elementTop < windowHeight - revealPoint) {
+              reveals[i].classList.add('active');
+            }
+          }
+        }
+      
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Trigger on page load
+      </script>
+      
+     </section>
+    </body>
+
+    <footer class="footer">
+      <div class="footer-content">
+          <div class="footer-section">
+              <h3>Shop</h3>
+              <a href="inventory.html">All Products</a>
+              <a href="index.html">Best Selllers</a>
+              <a href="inventory.html">Gift Sets</a>
+          </div>
+          <div class="footer-section">
+              <h3>About</h3>
+              <a href="about.html">Our Story</a>
+              <a href="about.html">Ingredients</a>
+              <a href="about.html">Sustainability</a>
+              
+          </div>
+          <div class="footer-section">
+              <h3>Help</h3>
+              <a href="contacts.html">Contact Us</a>
+              <a href="contacts.html">FAQ</a>
+              <a href="contacts.html">Track Order</a>
+          </div>
+      </div>
+
+      <p style="text-align: center; font-size: 14px; margin-top: 10px;">
+        Follow <strong>Rhode</strong> for skincare tips, product drops, and behind-the-scenes moments.
+      </p>
+        <div class="social-icons" style="text-align: center; margin-top: 20px;">
+          <a href="https://facebook.com" style="margin: 0 10px; font-size: 24px; color: #4267B2;">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com" style="margin: 0 10px; font-size: 24px; color: #E1306C;">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://twitter.com" style="margin: 0 10px; font-size: 24px; color: #1DA1F2;">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://youtube.com" style="margin: 0 10px; font-size: 24px; color: #FF0000;">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      <div class="footer-bottom">
+          <p>&copy; 2025 rhode. All rights reserved.</p>
+      </div>
+  </footer>
+ </div>
+</section>    
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    hamburger.addEventListener("click", function () {
+      navLinks.classList.toggle("show");
+    });
+  });
+</script>
+
+</body>
+</html>
+
+          

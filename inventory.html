@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rhode</title>
+  <link rel="stylesheet" href="style.css">
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+  font-family: 'Helvetica Neue', sans-serif; 
+  margin: 0;
+  padding: 0;
+  background-color: #f5eeee; 
+  color: #333; 
+}
+ .mynavbar .logo img {
+      height: 50px;
+      display: block;
+ }
+    
+    .category-button-wrapper {
+      display: flex;
+      justify-content: center;  /* centers horizontally */
+      align-items: center;      /* centers vertically  */
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .category-buttons .btn {
+      padding: 15px 30px;
+      border: 1px solid #dec0ab;
+      border-radius: 30px;
+      font-size: 14px;
+      color: #322b27;
+      background-color: #f8f8f8;
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .category-buttons .btn:hover {
+      background-color: #5a5e57;
+      color: white;
+    }
+
+/* Headings inside each section */
+section h1, section h2 {
+  text-align: center; /* Centered for visual hierarchy */
+  margin-top: 2rem;
+  font-size: 2rem; 
+  color: #222; 
+  padding:0px;
+  margin: 0px; 
+}
+  
+/* Grid layout for product cards */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+  gap: 2rem; /* Space between cards */
+  padding: 2rem;
+  max-width: 1200px; /* Limits width on large screens */
+  margin: 0 auto; /* Center the grid horizontally */
+}
+
+/* Individual product card styling */
+.product-card {
+  background: #fff; 
+  border-radius: 12px; /* Rounded corners for soft look */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 1rem;
+  text-align: center; 
+  transition: transform 0.2s ease, box-shadow 0.3s ease; /* Smooth hover */
+}
+
+/* Hover effect for cards */
+.product-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12); /* Deeper shadow on hover */
+}
+
+/* Image styling inside cards */
+.product-card img {
+  width: 100%;
+  max-height: 1200px; /* Consistent image height */
+  object-fit: cover; /* Crops images nicely */
+  border-radius: 8px; 
+}
+
+/* Product name */
+
+.product-card h3 {
+  margin-bottom: 20px;
+    padding: 0px; 
+    margin: 0; 
+}
+
+.product-card p {
+  margin-bottom: 20px;
+  color: #666;
+    padding: 5px 10px; /* Adjust padding to your liking */
+    margin: 0; /* Adjust margin if necessary */
+}
+
+/* Add to cart button styling */
+.product-card button {
+  display: inline-block;
+  padding: 10px 28px;
+  border: 1px solid #dec0ab; 
+  border-radius: 30px;
+  font-size: 14px;
+  color: #322b27;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.product-card button:hover {
+  background-color: #5a5e57;
+  color: #131010;
+}
+.product-rating {
+  color: #efb400;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  padding: 0px;
+  margin: 0;
+}
+
+.product-message {
+  font-size: 0.95rem;
+  color: #2c2828;
+  margin-bottom: 20px;
+  line-height: 1.4;
+    padding: 0px; 
+    margin: 0;
+}
+
+
+/* Adjustments for smaller screens */
+@media (max-width: 600px) {
+  .product-grid {
+    padding: 1rem; /* Reduce padding on small screens */
+  }
+
+  .product-card h2 {
+    font-size: 1rem; /* Slightly smaller headings */
+  }
+
+  .product-card p {
+    font-size: 0.9rem;
+  }
+
+  .product-card button {
+    font-size: 0.9rem; /* Smaller button text for mobile */
+  }
+}
+
+</style>
+</head>
+<body>
+    <header class="mynavbar">
+         <div class="logo">
+            <img src="images/logo.png" alt="Logo" style="height: 79px; width: 100px;">
+    </div>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+
+          <nav id="nav-links">
+            <a href="index.html"> Home</a>
+            <a href="inventory.html" class="active"> Products</a>
+            <a href="about.html">About Us</a>
+            <a href="cart.html">Cart</a>
+            <a href="contacts.html">Contacts</a>
+        </nav>
+    </header>
+
+  <div class="category-button-wrapper">
+    <div class="category-buttons">
+      <a href="#skin" class="btn">Skin</a>
+      <a href="#lips-cheek" class="btn">Lips + Cheek</a>
+      <a href="#sets" class="btn">Sets</a>
+    </div>
+  </div>
+
+  <!-- Section: Shop Skincare -->
+  
+<section class="shopskincare">
+  <h2>SHOP RHODE</h2>
+  <div class="product-grid">
+
+        <!-- Product 1 -->
+          <div class="product-card">
+            <img src="images/skin6.jpg" alt="Pink lip tint">
+            <h3>Pink lip tint</h3>
+             <p>P38.00</p>
+             <div class="product-rating">★★★☆☆</div>
+           <p>A touch of pink, a pop of glow — wear it soft or bold</p>
+            <form action="cart.html" method="get">
+          <input type="hidden" name="product" value="Pink lip tint">
+          <input type="hidden" name="price" value="P38.00">
+          <button onclick="addToCart('Pink lip tint', '38.00', 'images/skin6.jpg')">Add to Cart</button>
+        </form>
+      </div>
+  
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="images/shop2.jpg" alt="Neutral brown lip tints">
+        <h3>Neutral brown lip tints</h3>
+        <p>P109.99</p>
+        <div class="product-rating">★★★★★</div>
+        <p class="product-message">Earthy elegance in every swipe. Effortlessly chic.</p>
+        <form action="cart.html" method="get">
+          <input type="hidden" name="product" value="Neutral brown lip tints">
+          <input type="hidden" name="price" value="P109.99">
+          <button onclick="addToCart('Neutral brown Lip tints', '109.99', 'images/shop2.jpg')">Add to Cart</button>
+        </form>
+      </div>
+
+       <!-- Product 3 -->
+       <div class="product-card">
+        <img src="images/skin4.jpg" alt="Brown Lip Liner">
+        <h3>Brown Lip liner</h3>
+        <p>P22.00</p>
+        <div class="product-rating">★★★★★</div>
+        <p class="product-message"> Define your pout with this creamy, long-lasting brown Liner</p>
+        <form action="cart.html" method="get">
+          <input type="hidden" name="product" value="Brown Lip liner">
+          <input type="hidden" name="price" value="P22.00">
+          <button onclick="addToCart('Brown Lip liner', '22.00', 'images/skin4.jpg')">Add to Cart</button>
+        </form>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card ">
+        <img src="images/skin5.jpg" alt="Nude pink lip gloss">
+        <h3>Nude pink lip gloss</h3>
+        <p>P62.00</p>
+        <div class="product-rating">★★★★★</div>
+        <p class="product-message">Glossy, flirty, and oh-so-rhude. Your lips, but better. </p>
+        <form action="cart.html" method="get">
+          <input type="hidden" name="product" value="Nude pink lip gloss">
+          <input type="hidden" name="price" value="P62.00">
+          <button onclick="addToCart('Nude pink lip gloss', '62.00', 'images/skin5.jpg')">Add to Cart</button>
+        </form>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card">
+        <img src="images/skin3.jpg" alt="Pineabble Refreasher">
+        <h3>Pineapple Refreasher </h3>
+        <p>P76.00</p>
+        <div class="product-rating">★★★☆☆</div>
+        <p class="product-message">Hydration in every drop — for skin that craves a tropical kiss.</p>
+        <form action="cart.html" method="get">
+          <input type="hidden" name="product" value="Pineapple Refreasher">
+          <input type="hidden" name="price" value="P76.00">
+          <button onclick="addToCart('Pineapple Refreasher', '79.00', 'images/skin3.jpg')">Add to Cart</button>
+        </form>
+      </div>
+
+    <!-- Product 6 -->
+    <div class="product-card">
+        <img src="images/skin1.jpg" alt="Peptide glazing fluid">
+        <h3>Peptide glazing fluid</h3>
+        <p>P55.00</p>
+        <div class="product-rating">★★★★★</div>
+        <p class="product-message"> Glow like glass. Hydration meets radiance.</p>
+        <form action="cart.html" method="get">
+          <input type="hidden" name="product" value="Peptide glazing fluid">
+          <input type="hidden" name="price" value="P55.000">
+          <button onclick="addToCart('Peptide glazing fluid', '55.00', 'images/skin1.jpg')">Add to Cart</button>
+        </form>
+      </div>
+  </section>
+
+  <!-- Section: Skin -->
+  <section id="skin">
+    <h2>SKIN</h2>
+    <div class="product-grid product-scroll">
+
+       <!-- Product 1 -->
+      <div class="product-card">
+        <img src="images/skin12.jpg" alt="Rhode Gua Sha">
+        <h3>Rhode Gua Sha</h3>
+        <p>P89.99</p>
+        <div class="product-rating">★★★★★</div>
+        <p class="product-message">Sculpt, soothe, and glow — a timeless ritual for radiant skin</p>
+        <form action="cart.html" method="get">
+          <input type="hidden" name="product" value="Rhode Gua Sha">
+          <input type="hidden" name="price" value="P89.99">
+          <button onclick="addToCart('Rhode Gua Sha', '89.99', 'images/skin12.jpg')">Add to Cart</button>
+        </form>
+      </div>
+  
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="images/skin7.jpg" alt="Under Eye Mask">
+        <h3>Under Eye Mask</h3>
+        <p>P79.99</p>
+        <div class="product-rating">★★★☆☆</div>
+        <p class="product-message">Depuff. Brighten. Rewind tired eyes in minutes.</p>
+        <form action="cart.html" method="get">
+          <input type="hidden" name="product" value="Under Eye Mask">
+          <input type="hidden" name="price" value="P79.99">
+          <button onclick="addToCart('Under Eye Mask', '79.99', 'images/skin7.jpg')">Add to Cart</button>
+        </form>
+      </div>
+  
+       <!-- Product 3 -->
+       <div class="product-card">
+        <img src="images/skin8.jpg" alt="Face Mask">
+        <h3>Face Mask</h3>
+        <p>P44.99</p>
+        <div class="product-rating">★★★★☆</div>
+        <p class="product-message">Your weekly glow-up — deep care in one luxurious layer</p>
+        <form action="cart.html" method="get">
+          <input type="hidden" name="product" value="Face Mask">
+          <input type="hidden" name="price" value="P44.99">
+          <button onclick="addToCart('Face Mask', '44.99', 'images/skin8.jpg')">Add to Cart</button>
+        </form>
+    </div>
+
+     <!-- Product 4 -->
+     <div class="product-card">
+      <img src="images/skin9.jpg" alt="Body Wash">
+      <h3>Body Wash</h3>
+      <p>P99.99</p>
+      <div class="product-rating">★★★★★</div>
+        <p class="product-message">Soft bubbles, softer skin. Cleanse without compromise.</p>
+      <form action="cart.html" method="get">
+        <input type="hidden" name="product" value="Body Wash">
+        <input type="hidden" name="price" value="P99.99">
+        <button onclick="addToCart('Body Wash', '99.99', 'images/skin9.jpg')">Add to Cart</button>
+      </form>
+    </div>
+
+     <!-- Product 5 -->
+     <div class="product-card ">
+      <img src="images/skin10.jpg" alt="Restore Barrier Cream">
+      <h3>Restore Barrier Cream</h3>
+      <p>P108.00</p>
+      <div class="product-rating">★★★★★</div>
+        <p class="product-message">Wrap your skin in comfort. Strengthen and soothe daily.</p>
+      <form action="cart.html" method="get">
+        <input type="hidden" name="product" value="Restore Barrier Cream">
+        <input type="hidden" name="price" value="P108.00">
+        <button onclick="addToCart('Restore Barrier Cream', '108.00', 'images/skin10.jpg')">Add to Cart</button>
+      </form>
+  </div>
+
+   <!-- Product 6 -->
+   <div class="product-card">
+    <img src="images/skin11.jpg" alt="Rhode Body Cream">
+    <h3>Rhode Body Cream</h3>
+    <p>P69.99</p>
+    <div class="product-rating">★★★★☆ </div>
+        <p class="product-message"> Hydration that hugs. Smooth, supple, and deeply nourished.</p>
+    <form action="cart.html" method="get">
+      <input type="hidden" name="product" value="Rhode Body Cream ">
+      <input type="hidden" name="price" value="P69.99">
+      <button onclick="addToCart('Rhode Body Cream', '69.99', 'images/skin11.jpg')">Add to Cart</button>
+    </form>
+  </div>
+  </section>
+
+  <!-- Section: Lips + Cheek -->
+  <section id="lips-cheek">
+    <h2>LIPS+CHEEK</h2>
+    <div class="product-grid">
+
+        <!-- Product 1 -->
+      <div class="product-card">
+        <img src="images/lip1.jpg" alt="Lip tint phone case holder">
+        <h3>Lip tint phone case holder</h3>
+        <p>P89.99</p>
+        <div class="product-rating">★★★★★</div>
+        <p class="product-message">  On-the-go glam — your tint travels with style.</p>
+        <form action="cart.html" method="get">
+          <input type="hidden" name="product" value="Lip tint phone case holder">
+          <input type="hidden" name="price" value="P89.00">
+          <button onclick="addToCart('lip tint phone case holder', '89.99', 'images/lip1.jpg')">Add to Cart</button>
+        </form>
+      </div>
+
+       <!-- Product 2 -->
+       <div class="product-card">
+        <img src="images/lip2.jpg" alt="Strawberry lip tint">
+        <h3>Strawberry lip tint</h3>
+        <p>P52.00</p>
+        <div class="product-rating">★★★★★</div>
+        <p class="product-message">Berry sweet. Berry bold. All-day color, zero fuss.</p>
+        <form action="cart.html" method="get">
+          <input type="hidden" name="product" value="Strawberry lip tint">
+          <input type="hidden" name="price" value="P52.00">
+          <button onclick="addToCart('Strawberry lip tint', '52.00', 'images/lip2.jpg')">Add to Cart</button>
+        </form>
+    </div>
+
+     <!-- Product 3 -->
+     <div class="product-card">
+      <img src="images/arrival3.jpg" alt="Violet red lip tint">
+      <h3>Violet red lip tint</h3>
+      <p>P52.00</p>
+      <div class="product-rating"> ★★★☆☆</div>
+        <p class="product-message"> A deep flush of color for your most confident moments</p>
+      <form action="cart.html" method="get">
+        <input type="hidden" name="product" value="Violet red lip tint">
+        <input type="hidden" name="price" value="P52.00">
+        <button onclick="addToCart('Violet red lip tint', '52.00', 'images/arrival3.jpg')">Add to Cart</button>
+      </form>
+    </div>
+
+     <!-- Product 4 -->
+     <div class="product-card">
+      <img src="images/lip3.jpg" alt="Pink berry blush">
+      <h3>Pink berry blush</h3>
+      <p>P32.00</p>
+      <div class="product-rating">★★★★★</div>
+        <p class="product-message">Flushed with freshness — the glow of a perfect day.</p>
+      <form action="cart.html" method="get">
+        <input type="hidden" name="product" value="Pink berry blush">
+        <input type="hidden" name="price" value="P32.00">
+        <button onclick="addToCart('Pink berry blush', '32.00', 'images/lip3.jpg')">Add to Cart</button>
+      </form>
+  </div>
+
+   <!-- Product 5 -->
+   <div class="product-card">
+    <img src="images/lip6.jpg" alt="Rasberry Blush">
+    <h3>Rasberry Blush</h3>
+    <p>P32.00</p>
+    <div class="product-rating">★★★★☆ </div>
+        <p class="product-message">Juicy color payoff that melts into your skin.</p>
+    <form action="cart.html" method="get">
+      <input type="hidden" name="product" value="Rasberry Blush">
+      <input type="hidden" name="price" value="P32.00">
+      <button onclick="addToCart('Rasberry Blush', '32.00', 'images/lip6.jpg')">Add to Cart</button>
+    </form>
+  </div>
+
+   <!-- Product 6 -->
+   <div class="product-card">
+    <img src="images/arrival1.jpg" alt="Mashmellow Blush">
+    <h3>Mashmellow Blush</h3>
+    <p>P32.00</p>
+    <div class="product-rating">★★★★★</div>
+        <p class="product-message">Whipped-to-perfection blush with a cloud-like finish.</p>
+    <form action="cart.html" method="get">
+      <input type="hidden" name="product" value="Mashmellow Blush">
+      <input type="hidden" name="price" value="P32.00">
+      <button onclick="addToCart('Mashmellow Blush', '32.00', 'images/arrival1.jpg')">Add to Cart</button>
+    </form>
+  </div>
+  </section>
+
+  <!-- Section: Sets -->
+  <section id="sets">
+    <h2>SETS</h2>
+    <div class="product-grid">
+      
+        <!-- Product 1-->
+      <div class="product-card">
+        <img src="images/set1.jpg" alt="Morning routine set">
+        <h3>Morning routine set</h3>
+        <p>P78.00</p>
+        <div class="product-rating">★★★★★</div>
+        <p class="product-message">our sunrise essentials — fresh-faced from AM to PM.</p>
+        <form action="cart.html" method="get">
+          <input type="hidden" name="product" value="Morning routine set">
+          <input type="hidden" name="price" value="P78.00">
+          <button onclick="addToCart('Morning routine set', '78.00', 'images/set1.jpg')">Add to Cart</button>
+        </form>
+      </div>
+
+       <!-- Product 2 -->
+       <div class="product-card">
+        <img src="images/set2.jpg" alt="Autumn Fever set">
+        <h3>Autumn Fever set</h3>
+        <p>P219.99</p>
+        <div class="product-rating">★★★☆☆ </div>
+        <p class="product-message">Fall in love with your skin — rich tones, deep hydration, and cozy skincare made for crisp days and golden light.</p>
+        <form action="cart.html" method="get">
+          <input type="hidden" name="product" value="Autumn Fever set">
+          <input type="hidden" name="price" value="P219.99">
+          <button onclick="addToCart('Autumn Fever set', '219.99', 'images/set2.jpg')">Add to Cart</button>
+        </form>
+    </div>
+
+     <!-- Product 3 -->
+     <div class="product-card">
+      <img src="images/set3.jpg" alt="Rhode Makeup Set ">
+      <h3>Rhode Makeup Set</h3>
+      <p>P179.99</p>
+      <div class="product-rating">★★★★★</div>
+        <p class="product-message">Use our Daily Routine Makeup Set to Set your day.</p>
+      <form action="cart.html" method="get">
+        <input type="hidden" name="product" value="Rhode Makeup Set ">
+        <input type="hidden" name="price" value="P179.99">
+        <button onclick="addToCart('Rhode Makeup Set', '179.99', 'images/set3.jpg')">Add to Cart</button>
+      </form>
+    </div>
+
+     <!-- Product 4 -->
+     <div class="product-card">
+      <img src="images/set4.jpg" alt="Pocket Size Sets ">
+      <h3>Pocket Size Sets</h3>
+      <p>P98.00</p>
+      <div class="product-rating">★★★★☆</div>
+        <p class="product-message">Skincare that goes where you go. These minis deliver full-size impact — perfect for touch-ups, travel, or trying something new.</p>
+      <form action="cart.html" method="get">
+        <input type="hidden" name="product" value="Pocket Size Sets ">
+        <input type="hidden" name="price" value="P98.00">
+        <button onclick="addToCart('Pocket Size Sets', '98.00', 'images/set4.jpg')">Add to Cart</button>
+      </form>
+  </div>
+
+   <!-- Product 5 -->
+   <div class="product-card">
+    <img src="images/set5.jpg" alt="Our Love Special ">
+    <h3>Our Love Special </h3>
+    <p>P56.00</p>
+    <div class="product-rating">★★★★★</div>
+        <p class="product-message"> Warm hues and cozy vibes — skincare for sweater weather.</p>
+    <form action="cart.html" method="get">
+      <input type="hidden" name="product" value="Our Love Special ">
+      <input type="hidden" name="price" value="P56.00">
+      <button onclick="addToCart('Our Love Special', '56.00', 'images/set5.jpg')">Add to Cart</button>
+    </form>
+  </div>
+
+   <!-- Product 6 -->
+   <div class="product-card">
+    <img src="images/arrival2.jpg" alt="Winter essentials">
+    <h3>Winter essentials</h3>
+    <p>199.99</p>
+    <div class="product-rating">★★★★★</div>
+        <p class="product-message">Cold weather, meet your match. These rich, hydrating essentials are curated to protect, nourish, and restore — no matter how low the temps drop ❄️.</p>
+    <form action="cart.html" method="get">
+      <input type="hidden" name="product" value="Winter essentials">
+      <input type="hidden" name="price" value="P199.99">
+      <button onclick="addToCart('Winter essentials', '199.99', 'images/arrival2.jpg')">Add to Cart</button>
+    </form>
+    </div>
+
+<!-- java-->
+
+<script>
+  function addToCart(name, price, image) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name, price, image });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(name + ' has been added to your cart!');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+  const revealElements = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        console.log('Element is in view');
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  revealElements.forEach(element => {
+    observer.observe(element);
+  });
+});
+
+</script>
+</div>
+
+
+<footer class="footer">
+  <div class="footer-content">
+      <div class="footer-section">
+          <h3>Shop</h3>
+          <a href="inventory.html">All Products</a>
+          <a href="index.html">Best Sellers</a>
+          <a href="inventory.html">Gift Sets</a>
+      </div>
+      <div class="footer-section">
+          <h3>About</h3>
+          <a href="about.html">Our Story</a>
+          <a href="about.html">Ingredients</a>
+          <a href="about.html">Sustainability</a>
+          
+      </div>
+      <div class="footer-section">
+          <h3>Help</h3>
+          <a href="contacts.html">Contact Us</a>
+          <a href="contacts.html">FAQ</a>
+          <a href="contacts.html">Track Order</a>
+      </div>
+  </div>
+
+  <p style="text-align: center; font-size: 14px; margin-top: 10px;">
+    Follow <strong>Rhode</strong> for skincare tips, product drops, and behind-the-scenes moments.
+  </p>
+    <div class="social-icons" style="text-align: center; margin-top: 20px;">
+      <a href="https://facebook.com" style="margin: 0 10px; font-size: 24px; color: #4267B2;">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://instagram.com" style="margin: 0 10px; font-size: 24px; color: #E1306C;">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://twitter.com" style="margin: 0 10px; font-size: 24px; color: #1DA1F2;">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://youtube.com" style="margin: 0 10px; font-size: 24px; color: #FF0000;">
+        <i class="fab fa-youtube"></i>
+      </a>
+    </div>
+
+  <div class="footer-bottom">
+      <p>&copy; 2025 rhode. All rights reserved.</p>
+  </div>
+</footer>
+</div>
+</section>    
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    hamburger.addEventListener("click", function () {
+      navLinks.classList.toggle("show");
+    });
+  });
+</script>
+
+</body>
+</html>

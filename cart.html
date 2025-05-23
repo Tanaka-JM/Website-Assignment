@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rhode</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+   h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    /* Centered cart container with max-width to control width */
+    .cart-container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 20px;
+      border-bottom: 1px solid #eee;
+      padding: 20px 0;
+      align-items: center;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .cart-item img {
+      width: 120px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #f0f0f0;
+    }
+
+    .item-details {
+      flex: 1;
+    }
+
+    .item-details h2 {
+      font-size: 18px;
+      margin: 0 0 10px;
+    }
+
+    .item-details p {
+      margin: 4px 0;
+      font-size: 14px;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .quantity-controls button {
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+      background: #f2f2f2;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .quantity-controls button:hover {
+      background: #ddd;
+    }
+
+    .cart-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    .remove-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #888;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    .remove-btn:hover {
+      color: #dcd4d3;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .empty {
+      text-align: center;
+      color: #999;
+      padding: 40px 0;
+    }
+
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+  <body>
+    <header class="mynavbar">
+          <div class="logo">
+            <img src="images/logo.png" alt="Logo" style="height: 89px; width: 100px;">
+          </div>
+          <div class="hamburger" id="hamburger">&#9776;</div>
+
+          <nav id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="inventory.html">Products</a>
+            <a href="about.html">About Us</a>
+            <a href="cart.html" class="active"> Cart</a>
+            <a href="contacts.html">Contacts</a>
+        </nav>
+    </header>
+
+    <div class="cart-container">
+      <h1>My Shopping Cart</h1>
+      <div id="cart-items"></div>
+      <div id="cart-total" class="total"></div>
+    </div>
+  
+    <script>
+      // Load cart from localStorage
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+      // Save updated cart
+      function updateLocalStorage() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+      }
+  
+      // Render all cart items
+      function renderCart() {
+        const container = document.getElementById('cart-items');
+        const totalDiv = document.getElementById('cart-total');
+        container.innerHTML = '';
+  
+        if (cart.length === 0) {
+          container.innerHTML = '<div class="empty">Your cart is empty.</div>';
+          totalDiv.innerHTML = '';
+          return;
+        }
+  
+        let total = 0;
+  
+        cart.forEach((item, index) => {
+          const qty = item.quantity || 1;
+          const subtotal = parseFloat(item.price) * qty;
+          total += subtotal;
+  
+          container.innerHTML += `
+            <div class="cart-item">
+              <img src="${item.image}" alt="${item.name}">
+              <div class="item-details">
+                <h2>${item.name}</h2>
+                <p><strong>Material:</strong> ${item.material || 'N/A'}</p>
+                <p><strong>Color:</strong> ${item.colorName || 'N/A'}</p>
+                <p><strong>Size:</strong> ${item.size || 'One Size'}</p>
+                <div class="quantity-controls">
+                  <button onclick="changeQuantity(${index}, -1)">−</button>
+                  <span>${qty}</span>
+                  <button onclick="changeQuantity(${index}, 1)">+</button>
+                </div>
+              </div>
+              <div class="cart-actions">
+                <button class="remove-btn" onclick="removeItem(${index})">&times;</button>
+                <div class="price">P${subtotal.toFixed(2)}</div>
+              </div>
+            </div>
+          `;
+        });
+  
+        totalDiv.innerHTML = `Total: P${total.toFixed(2)}`;
+      }
+  
+      // Change item quantity
+      function changeQuantity(index, delta) {
+        const item = cart[index];
+        item.quantity = (item.quantity || 1) + delta;
+        if (item.quantity <= 0) {
+          removeItem(index);
+        } else {
+          updateLocalStorage();
+          renderCart();
+        }
+      }
+  
+      // Remove item from cart
+      function removeItem(index) {
+        cart.splice(index, 1);
+        updateLocalStorage();
+        renderCart();
+      }
+  
+      // Render cart on load
+      window.onload = renderCart;
+    </script>
+
+   <footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Shop</h3>
+            <a href="inventory.html">All Products</a>
+            <a href="index.html">Best Sellers</a>
+            <a href="inventory.html">Gift Sets</a>
+        </div>
+        <div class="footer-section">
+            <h3>About</h3>
+            <a href="about.html">Our Story</a>
+            <a href="about.html">Ingredients</a>
+            <a href="about.html">Sustainability</a>
+            
+        </div>
+        <div class="footer-section">
+            <h3>Help</h3>
+            <a href="contacts.html">Contact Us</a>
+            <a href="contacts.html">FAQ</a>
+            <a href="contacts.html">Track Order</a>
+        </div>
+    </div>
+    <p style="text-align: center; font-size: 14px; margin-top: 10px;">
+      Follow <strong>Rhode</strong> for skincare tips, product drops, and behind-the-scenes moments.
+    </p>
+      <div class="social-icons" style="text-align: center; margin-top: 20px;">
+        <a href="https://facebook.com" style="margin: 0 10px; font-size: 24px; color: #4267B2;">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com" style="margin: 0 10px; font-size: 24px; color: #E1306C;">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://twitter.com" style="margin: 0 10px; font-size: 24px; color: #1DA1F2;">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://youtube.com" style="margin: 0 10px; font-size: 24px; color: #FF0000;">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2025 rhode. All rights reserved.</p>
+    </div>
+    </footer>
+
+  </div>
+  </section>    
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    hamburger.addEventListener("click", function () {
+      navLinks.classList.toggle("show");
+    });
+  });
+</script>
+
+  </body>
+  </html>
+
+  
